@@ -9,39 +9,35 @@ import (
 	"strings"
 )
 
-var sc = bufio.NewScanner(os.Stdin)
-var wtr = bufio.NewWriter(os.Stdout)
+var r = bufio.NewScanner(os.Stdin)
+var w = bufio.NewWriter(os.Stdout)
 
 func main() {
 	defer flush()
-
-	a := in()
-
-	out(a)
 }
 
 func init() {
-	sc.Buffer([]byte{}, math.MaxInt64)
-	sc.Split(bufio.ScanWords)
+	r.Buffer([]byte{}, math.MaxInt64)
+	r.Split(bufio.ScanWords)
 	if len(os.Args) > 1 && os.Args[1] == "i" {
 		b, e := os.ReadFile("./input.txt")
 		if e != nil {
 			panic(e)
 		}
-		sc = bufio.NewScanner(strings.NewReader(strings.Replace(string(b), " ", "\n", -1)))
+		r = bufio.NewScanner(strings.NewReader(strings.Replace(string(b), " ", "\n", -1)))
 	}
 }
 
 func flush() {
-	e := wtr.Flush()
+	e := w.Flush()
 	if e != nil {
 		panic(e)
 	}
 }
 
 func in() int {
-	sc.Scan()
-	i, e := strconv.Atoi(sc.Text())
+	r.Scan()
+	i, e := strconv.Atoi(r.Text())
 	if e != nil {
 		panic(e)
 	}
@@ -49,8 +45,13 @@ func in() int {
 }
 
 func out(v ...interface{}) {
-	_, e := fmt.Fprintln(wtr, v...)
+	_, e := fmt.Fprintln(w, v...)
 	if e != nil {
 		panic(e)
 	}
+}
+
+func is() []byte {
+	r.Scan()
+	return r.Bytes()
 }
