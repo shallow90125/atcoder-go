@@ -16,6 +16,8 @@ func main() {
 	defer flush()
 }
 
+const inf = math.MaxInt64
+
 func init() {
 	r.Buffer([]byte{}, math.MaxInt64)
 	r.Split(bufio.ScanWords)
@@ -59,8 +61,12 @@ func in3() (int, int, int) {
 	return in(), in(), in()
 }
 
-func in4() (int, int, int, int) {
-	return in(), in(), in(), in()
+func inn(n int) []int {
+	v := make([]int, n)
+	for i := 0; i < n; i++ {
+		v[i] = in()
+	}
+	return v
 }
 
 func ib() []byte {
@@ -68,7 +74,23 @@ func ib() []byte {
 	return r.Bytes()
 }
 
+func ibn(n int) [][]byte {
+	v := make([][]byte, n)
+	for i := 0; i < n; i++ {
+		v[i] = ib()
+	}
+	return v
+}
+
 func is() string {
 	r.Scan()
 	return r.Text()
+}
+
+func isn(n int) []string {
+	v := make([]string, n)
+	for i := 0; i < n; i++ {
+		v[i] = is()
+	}
+	return v
 }
