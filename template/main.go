@@ -35,6 +35,13 @@ func flush() {
 	}
 }
 
+func out(v ...interface{}) {
+	_, e := fmt.Fprintln(w, v...)
+	if e != nil {
+		panic(e)
+	}
+}
+
 func in() int {
 	r.Scan()
 	i, e := strconv.Atoi(r.Text())
@@ -44,14 +51,24 @@ func in() int {
 	return i
 }
 
-func out(v ...interface{}) {
-	_, e := fmt.Fprintln(w, v...)
-	if e != nil {
-		panic(e)
-	}
+func in2() (int, int) {
+	return in(), in()
 }
 
-func is() []byte {
+func in3() (int, int, int) {
+	return in(), in(), in()
+}
+
+func in4() (int, int, int, int) {
+	return in(), in(), in(), in()
+}
+
+func ib() []byte {
 	r.Scan()
 	return r.Bytes()
+}
+
+func is() string {
+	r.Scan()
+	return r.Text()
 }
