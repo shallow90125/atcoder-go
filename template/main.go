@@ -94,3 +94,24 @@ func isn(n int) []string {
 	}
 	return v
 }
+
+func min(a, b int) int {
+	if a < b {
+		return a
+	}
+	return b
+}
+
+func max(a, b int) int {
+	if a < b {
+		return b
+	}
+	return a
+}
+
+func abs(a int) int {
+	if 0 < a {
+		return a
+	}
+	return -a
+}
