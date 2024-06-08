@@ -17,6 +17,7 @@ func main() {
 }
 
 const inf = math.MaxInt64
+const mod998244353 = 998244353
 
 func init() {
 	r.Buffer([]byte{}, math.MaxInt64)
@@ -95,11 +96,23 @@ func isn(n int) []string {
 	return v
 }
 
-func min(a, b int) int {
-	if a < b {
+func itoa(v int) string {
+	return strconv.Itoa(v)
+}
+
+func atoi(v string) int {
+	d, e := strconv.Atoi(v)
+	if e != nil {
+		panic(e)
+	}
+	return d
+}
+
+func abs(a int) int {
+	if 0 < a {
 		return a
 	}
-	return b
+	return -a
 }
 
 func max(a, b int) int {
@@ -109,9 +122,17 @@ func max(a, b int) int {
 	return a
 }
 
-func abs(a int) int {
-	if 0 < a {
+func min(a, b int) int {
+	if a < b {
 		return a
 	}
-	return -a
+	return b
+}
+
+func pow(a, b int) int {
+	return int(math.Pow(float64(a), float64(b)))
+}
+
+func sqrt(i int) int {
+	return int(math.Sqrt(float64(i)))
 }
