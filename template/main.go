@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"math"
 	"os"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -135,4 +136,22 @@ func pow(a, b int) int {
 
 func sqrt(i int) int {
 	return int(math.Sqrt(float64(i)))
+}
+
+func reverse[T any](s []T) {
+	for i := 0; i < len(s)/2; i++ {
+		s[i], s[len(s)-1-i] = s[len(s)-1-i], s[i]
+	}
+}
+
+func sorta[T int | byte](s []T) {
+	sort.Slice(s, func(i, j int) bool {
+		return s[i] < s[j]
+	})
+}
+
+func sortd[T int | byte](s []T) {
+	sort.Slice(s, func(i, j int) bool {
+		return s[i] > s[j]
+	})
 }
